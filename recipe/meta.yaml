@@ -12,23 +12,23 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - python >=3.8
     - pytest-runner >=5.2
+    - setuptools-scm
   run:
     - aicsimageio >=4.6.3
-    - fsspec
-    - napari >=0.4.13
-    - psutil >=5.7.0
+    - fsspec >=2022.7.1
+    - napari >=0.4.11
+    - psutil >=5.7.0    
     - python >=3.8
     # plugins
+    - aicspylibczi >=3.0.5
     - bioformats_jar >=2020.5.27
-    - mrc >=0.2.0
-    - nd2 >=0.3.0
     - readlif >=0.6.4
 
 test:
@@ -37,6 +37,7 @@ test:
     - napari_aicsimageio.core
   commands:
     - pip list
+    - pip check
   requires:
     - pip
 
