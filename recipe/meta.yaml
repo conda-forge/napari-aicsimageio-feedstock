@@ -38,6 +38,7 @@ test:
     - napari_aicsimageio.core
   commands:
     - pip list
+    - pip check
   requires:
     - pip
 
