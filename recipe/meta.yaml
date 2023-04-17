@@ -1,5 +1,5 @@
 {% set name = "napari-aicsimageio" %}
-{% set version = "0.4.1" %}
+{% set version = "0.7.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-aicsimageio-{{ version }}.tar.gz
-  sha256: 40419d15257b2de9e0f6fd84b9cfe18959aaac47e9633ab6407655e8188159ed
+  sha256: 20295120186fd98b2eb0f460844c44697eb981d17ab74d28229be7b9b118a482
 
 build:
   noarch: python
@@ -21,31 +21,37 @@ requirements:
     - pytest-runner >=5.2
     - setuptools-scm
   run:
-    - aicsimageio >=4.1
+    - aicsimageio >=4.6.3
     - fsspec
-    - napari >=0.4.11
-    - napari-plugin-engine >=0.1.4
+    - napari >=0.4.13
+    - psutil >=5.7.0
     - python >=3.8
+    # plugins
+    - bioformats_jar >=2020.5.27
+    - mrc >=0.2.0
+    - nd2 >=0.3.0
+    - readlif >=0.6.4
 
 test:
   imports:
     - napari_aicsimageio
     - napari_aicsimageio.core
-    - napari_aicsimageio.out_of_memory
     - napari_aicsimageio.in_memory
+    - napari_aicsimageio.out_of_memory
   commands:
     - pip list
-    - pip check
   requires:
     - pip
 
 about:
   home: https://github.com/AllenCellModeling/napari-aicsimageio
   summary: AICSImageIO for napari. Multiple file format reading directly into napari using pure Python.
-  license: BSD-3-Clause
+  license: GPL-3.0-or-later
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
-    - conda-forge/napari
-    - JacksonMaxfield
+    - goanpeca
+    - jaimergp
+    - evamaxfield
+    - tlambert03
