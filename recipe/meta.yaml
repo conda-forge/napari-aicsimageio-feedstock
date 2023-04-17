@@ -12,13 +12,14 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - python >=3.8
     - pytest-runner >=5.2
+    - setuptools-scm
   run:
     - aicsimageio >=4.1
     - fsspec
